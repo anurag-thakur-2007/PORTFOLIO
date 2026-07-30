@@ -6,6 +6,7 @@ import { BentoCard } from "@/components/Card";
 import Reveal from "@/animations/Reveal";
 import TextReveal from "@/animations/TextReveal";
 import Button from "@/components/Button";
+import { PROFILE_DATA } from "@/data/config";
 
 export default function Resume() {
   return (
@@ -38,17 +39,17 @@ export default function Resume() {
               
               <div className="flex items-center gap-3">
                 <Button
-                  href="/resume.pdf"
+                  href={PROFILE_DATA.resumeUrl}
                   variant="secondary"
                   size="sm"
                   magnetic
                   icon={<Download className="h-4 w-4" />}
                 >
-                  Download PDF
+                  Download / Print
                 </Button>
                 
                 <Button
-                  href="/resume.pdf"
+                  href={PROFILE_DATA.resumeUrl}
                   variant="primary"
                   size="sm"
                   magnetic
@@ -63,8 +64,8 @@ export default function Resume() {
             <BentoCard className="p-6 md:p-10 select-none overflow-hidden h-[500px] relative text-left">
               {/* Overlay fade out effect at the bottom to invite downloading */}
               <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-neutral-card via-neutral-card/85 to-transparent z-20 flex items-center justify-center">
-                <Button href="/resume.pdf" variant="primary" size="lg" magnetic>
-                  View Full PDF Document
+                <Button href={PROFILE_DATA.resumeUrl} variant="primary" size="lg" magnetic>
+                  View Full Interactive Document
                 </Button>
               </div>
 
@@ -73,14 +74,14 @@ export default function Resume() {
                 {/* Header Mock */}
                 <div className="space-y-1.5 border-b border-neutral-border pb-4">
                   <h3 className="text-xl font-display font-extrabold tracking-tight text-foreground">
-                    Anurag Thakur
+                    {PROFILE_DATA.name}
                   </h3>
                   <div className="flex flex-wrap gap-4 text-foreground/50">
-                    <span>atanuragthakurpro@gmail.com</span>
+                    <span>{PROFILE_DATA.email}</span>
                     <span>&bull;</span>
-                    <span>+91 9140189784</span>
+                    <span>{PROFILE_DATA.phone}</span>
                     <span>&bull;</span>
-                    <span>Bhopal, India</span>
+                    <span>{PROFILE_DATA.location}</span>
                   </div>
                 </div>
 
@@ -95,8 +96,8 @@ export default function Resume() {
                       <span>Bachelor of Technology in Computer Science & Engineering</span>
                     </div>
                     <div className="text-right">
-                      <span className="block font-bold">2023 – 2027</span>
-                      <span>CGPA: 8.88 / 10</span>
+                      <span className="block font-bold">Aug 2024 – May 2028</span>
+                      <span>CGPA: {PROFILE_DATA.cgpa} / 10</span>
                     </div>
                   </div>
                 </div>
@@ -109,13 +110,14 @@ export default function Resume() {
                   <div className="space-y-3">
                     <div className="flex justify-between">
                       <div>
-                        <span className="font-bold text-foreground block">AI Developer Intern</span>
-                        <span>Infosys Springboard</span>
+                        <span className="font-bold text-foreground block">AI/ML Intern</span>
+                        <span>Infosys Springboard (Remote)</span>
                       </div>
                       <span className="font-bold">Nov 2025 – Present</span>
                     </div>
                     <ul className="list-disc pl-4 space-y-1">
-                      <li>Designed multi-agent AI systems using LangGraph to analyze legal compliance documents.</li>
+                      <li>Built a RAG-powered legal contract analyzer using LangChain and Pinecone, achieving 90% accuracy.</li>
+                      <li>Designed multi-agent AI systems using LangGraph to automate compliance workflows.</li>
                       <li>Optimized model performance via quantization, achieving 3x throughput speedups.</li>
                     </ul>
                   </div>
