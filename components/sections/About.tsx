@@ -13,7 +13,7 @@ export default function About() {
     { label: "Systems Built", value: "10+", desc: "AI pipelines & geospatial models" },
     { label: "Industry Experience", value: "Nov '25", desc: "Active AI Research Intern" },
     { label: "Event Attendees", value: "500+", desc: "Managed in college tech teams" },
-    { label: "Certifications", value: "5+", desc: "Oracle GenAI, NPTEL, and QA" },
+    { label: "Certifications", value: "15+", desc: "Oracle GenAI, NPTEL, and QA" },
   ];
 
   return (

@@ -218,10 +218,10 @@ export default function Coding() {
                   <div className="grid grid-cols-2 gap-4 items-center pt-2">
                     <div className="space-y-1">
                       <span className="text-3xl font-display font-extrabold tracking-tight text-accent-blue">
-                        {PROFILE_DATA.codeforcesCount}
+                        {PROFILE_DATA.codeforcesRating}
                       </span>
                       <span className="block text-[9px] uppercase tracking-wider font-semibold font-sans text-foreground/45">
-                        Problems Solved
+                        Contest Rating
                       </span>
                     </div>
                     <div className="space-y-1">
@@ -229,7 +229,7 @@ export default function Coding() {
                         {PROFILE_DATA.codeforcesDivision}
                       </span>
                       <span className="block text-[9px] uppercase tracking-wider font-semibold font-sans text-foreground/45">
-                        Rating: {PROFILE_DATA.codeforcesRating}
+                        Division Class
                       </span>
                     </div>
                   </div>
