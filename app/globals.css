@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* System Colors mapped from CSS variables */
@@ -58,22 +59,20 @@
   --font-display: var(--font-space-grotesk);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark Theme Color System Tokens */
-    --background: #0A0A0A;
-    --foreground: #F8F8F7;
-    
-    --primary: #F8F8F7;
-    --secondary: #0A0A0A;
-    
-    --accent-blue: #0052FF;
-    --accent-blue-hover: #1A66FF;
-    
-    --neutral-soft: #141414;
-    --neutral-border: #222222;
-    --neutral-card: #111111;
-  }
+.dark {
+  /* Dark Theme Color System Tokens */
+  --background: #0A0A0A;
+  --foreground: #F8F8F7;
+  
+  --primary: #F8F8F7;
+  --secondary: #0A0A0A;
+  
+  --accent-blue: #0052FF;
+  --accent-blue-hover: #1A66FF;
+  
+  --neutral-soft: #141414;
+  --neutral-border: #222222;
+  --neutral-card: #111111;
 }
 
 /* Base Body Override & Scroll Tweaks */
