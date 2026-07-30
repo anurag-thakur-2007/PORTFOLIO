@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactLenis } from "lenis/react";
 
 interface LenisProviderProps {
@@ -8,10 +8,25 @@ interface LenisProviderProps {
 }
 
 export default function LenisProvider({ children }: LenisProviderProps) {
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
   useEffect(() => {
-    // Lenis instance can be configured or customized here
-    // Lenis handles global scroll smoothly
+    // Check if the client device is a touch screen (mobile/tablet)
+    if (typeof window !== "undefined") {
+      const checkTouch = () => {
+        return (
+          "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0
+        );
+      };
+      setIsTouchDevice(checkTouch());
+    }
   }, []);
+
+  // Return native scrolling for touch/mobile devices to bypass library conflicts
+  if (isTouchDevice) {
+    return <>{children}</>;
+  }
 
   return (
     <ReactLenis
