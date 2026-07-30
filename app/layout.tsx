@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
+import { PROFILE_DATA } from "@/data/config";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -77,8 +78,8 @@ export default function RootLayout({
     "jobTitle": "Software Development Engineer",
     "url": "https://anuragthakur.dev",
     "sameAs": [
-      "https://github.com/anuragthakur",
-      "https://linkedin.com/in/anuragthakur"
+      PROFILE_DATA.socials.github,
+      PROFILE_DATA.socials.linkedin
     ],
     "knowsAbout": [
       "Software Engineering",
