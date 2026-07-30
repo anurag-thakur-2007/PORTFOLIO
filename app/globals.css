@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+@theme {
+  /* System Colors mapped from CSS variables */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-hover: var(--accent-blue-hover);
+  
+  --color-neutral-soft: var(--neutral-soft);
+  --color-neutral-border: var(--neutral-border);
+  --color-neutral-card: var(--neutral-card);
+
+  /* Typography Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Premium Animation & Transition Easing */
+  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-apple-in-out: cubic-bezier(0.85, 0, 0.15, 1);
+  --ease-spring: cubic-bezier(0.43, 0.13, 0.23, 0.96);
+
+  /* Timing scales */
+  --transition-duration-fast: 200ms;
+  --transition-duration-normal: 400ms;
+  --transition-duration-slow: 800ms;
+
+  /* Custom Border Radius */
+  --radius-bento: 24px;
+  --radius-pill: 9999px;
+
+  /* Premium Shadow Systems */
+  --shadow-premium: 0 10px 30px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.01);
+  --shadow-premium-hover: 0 30px 60px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.01);
+  --shadow-glow: 0 0 30px rgba(0, 82, 255, 0.15);
+}
+
+:root {
+  /* Light Theme Color System Tokens */
+  --background: #F8F8F7;
+  --foreground: #0A0A0A;
+  
+  --primary: #0A0A0A;
+  --secondary: #F8F8F7;
+  
+  --accent-blue: #0052FF;
+  --accent-blue-hover: #0041CC;
+  
+  --neutral-soft: #F4F4F3;
+  --neutral-border: #E5E5E3;
+  --neutral-card: #FFFFFF;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Theme Color System Tokens */
+    --background: #0A0A0A;
+    --foreground: #F8F8F7;
+    
+    --primary: #F8F8F7;
+    --secondary: #0A0A0A;
+    
+    --accent-blue: #0052FF;
+    --accent-blue-hover: #1A66FF;
+    
+    --neutral-soft: #141414;
+    --neutral-border: #222222;
+    --neutral-card: #111111;
+  }
+}
+
+/* Base Body Override & Scroll Tweaks */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Text Selection Highlight */
+::selection {
+  background-color: rgba(0, 82, 255, 0.15);
+  color: var(--accent-blue);
+}
+
+/* Minimal Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 82, 255, 0.3);
+}
+
+/* Keyboard Accessibility Focus Rings */
+*:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 4px;
+}
+
+/* Font helpers */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Smooth Scrolling integration support (Lenis) */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Handcrafted Custom Interactive Elements */
+
+/* Bento grid & layout cards */
+.bento-card {
+  position: relative;
+  background-color: var(--neutral-card);
+  border: 1px solid var(--neutral-border);
+  border-radius: var(--radius-bento);
+  overflow: hidden;
+  transition: all var(--transition-duration-normal) var(--ease-apple);
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 82, 255, 0.2);
+  box-shadow: var(--shadow-premium-hover);
+}
+
+/* Micro-interaction underlined links */
+.link-underlined {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.link-underlined::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1.5px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--accent-blue);
+  transform-origin: bottom right;
+  transition: transform var(--transition-duration-normal) var(--ease-apple);
+}
+
+.link-underlined:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Magnetic components cursor outline overlays */
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width var(--transition-duration-fast), height var(--transition-duration-fast), background-color var(--transition-duration-fast);
+}
+
+.cursor-follower-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(0, 82, 255, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease-out, width var(--transition-duration-fast), height var(--transition-duration-fast), border-color var(--transition-duration-fast), background-color var(--transition-duration-fast);
+}
+
+/* Editorial dot background mesh */
+.bg-mesh {
+  background-image: radial-gradient(var(--neutral-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Interactive card border glow container */
+.border-glow-wrapper {
+  position: relative;
+  border-radius: var(--radius-bento);
+}
+
+.border-glow-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(var(--radius-bento) + 1px);
+  background: radial-gradient(circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(0, 82, 255, 0.25) 0%, transparent 80%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-apple);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.border-glow-wrapper:hover::before {
+  opacity: 1;
+}
+
+.border-glow-content {
+  position: relative;
+  z-index: 1;
+  background-color: var(--neutral-card);
+  border-radius: var(--radius-bento);
+  border: 1px solid var(--neutral-border);
+}
+
+/* Prefers-reduced-motion Accessibility Fallbacks */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
